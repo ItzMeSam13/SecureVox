@@ -1,3 +1,12 @@
-.venv
-.vscode
-.pretrained_models
+
+_pycache_/
+*.pyc
+env/
+.venv/
+pretrained_models/
+.cache/
+data/
+.vscode/
+.idea/
+
+.env
