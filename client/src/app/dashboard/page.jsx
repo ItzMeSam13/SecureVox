@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { auth } from "@/Firebase/config";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 export default function Dashboard() {

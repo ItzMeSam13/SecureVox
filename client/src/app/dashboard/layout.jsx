@@ -1,11 +1,14 @@
 "use client";
-
+import { auth } from "@/Firebase/config";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import "../globals.css";
 
 export default function DashboardLayout({ children }) {
-	const handleLogout = () => {
-		console.log("Logging out...");
-		window.location.href = "/login";
+	const router = useRouter();
+	const handleLogout = async () => {
+		await signOut(auth);
+		router.push("/login");
 	};
 
 	return (
@@ -20,7 +23,7 @@ export default function DashboardLayout({ children }) {
 							<svg
 								className='w-4 h-4'
 								fill='none'
-								stroke='currentColor' 
+								stroke='currentColor'
 								viewBox='0 0 24 24'>
 								<path
 									strokeLinecap='round'
