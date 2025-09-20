@@ -1,5 +1,26 @@
 'use client'
 import { useState } from 'react';
+import { useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth";
+import { auth } from "@/Firebase/config";
+
+export default function SignupPage() {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [createUser, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+
+    const handleSubmit = async (e) => {
+		e.preventDefault(); // prevent page reload
+
+		try {
+			const res = await createUser(email, password);
+			console.log("Signup successful:", res);
+            setEmail("");
+			setPassword("");
+		} catch (error) {
+			console.error("Signup error:", error);
+		}
+};
+}
 
 export default function SignupPage() {
   const [showNotification, setShowNotification] = useState(false);
@@ -62,7 +83,9 @@ export default function SignupPage() {
             <input
               id="fullname"
               type="text"
+              value={name}
               placeholder="Enter your full name"
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 mt-1 bg-white/5 text-white placeholder-gray-400 border border-white/20 rounded-lg focus:ring-2 focus:ring-[#FFFFFF] focus:outline-none"
             />
           </div>
@@ -75,7 +98,9 @@ export default function SignupPage() {
             <input
               id="email"
               type="email"
+              value={email}
               placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 mt-1 bg-white/5 text-white placeholder-gray-400 border border-white/20 rounded-lg focus:ring-2 focus:ring-[#FFFFFF] focus:outline-none"
             />
           </div>
@@ -88,7 +113,9 @@ export default function SignupPage() {
             <input
               id="password"
               type="password"
+              value={password}
               placeholder="Enter your password"
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 mt-1 bg-white/5 text-white placeholder-gray-400 border border-white/20 rounded-lg focus:ring-2 focus:ring-[#FFFFFF] focus:outline-none"
             />
           </div>
@@ -100,8 +127,10 @@ export default function SignupPage() {
             </label>
             <input
               id="policeid"
-              type="text"  
+              type="text"
+              value={policeId}  
               placeholder="Enter your Police ID"
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 mt-1 bg-white/5 text-white placeholder-gray-400 border border-white/20 rounded-lg focus:ring-2 focus:ring-white focus:outline-none"
             />
             </div>
