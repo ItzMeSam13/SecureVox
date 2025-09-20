@@ -32,7 +32,7 @@ export default function Dashboard() {
 		<>
 			<div className='font-sans bg-[#0A2540] min-h-screen flex flex-col items-center justify-center p-10'>
 				{/* Dashboard Box */}
-				<div className='bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-12 w-full max-w-[700px] text-center shadow-2xl shadow-black/50'>
+				<div className='bg-white/10 backdrop-blur-md border border-white/200 rounded-2xl p-12 w-full max-w-[700px] text-center shadow-2xl shadow-black/50'>
 					<h2 className='text-3xl text-white font-bold mb-5'>
 						Voice Analysis Dashboard
 					</h2>
@@ -46,11 +46,6 @@ export default function Dashboard() {
 						<input type='file' accept='audio/*' className='hidden' />
 					</label>
 				</div>
-				<button
-					onClick={() => signOut(auth)}
-					className='mt-8 bg-red-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-red-700 transition-colors duration-200'>
-					Logout
-				</button>
 			</div>
 		</>
 	);
