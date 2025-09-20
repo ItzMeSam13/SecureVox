@@ -12,9 +12,9 @@ export default function DashboardLayout({ children }) {
 	};
 
 	return (
-		<div className='min-h-screen flex flex-col bg-gray-50'>
+		<div className='min-h-screen flex flex-col bg-[#0A2540]'>
 			<header className='bg-slate-900 text-white shadow-lg'>
-				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+				<div className='w-full mx-auto px-4 sm:px-6 lg:px-8'>
 					<div className='flex justify-between items-center py-4'>
 						<h1 className='text-3xl font-bold text-blue-400'>Secure Vox</h1>
 						<button
@@ -86,21 +86,21 @@ export default function DashboardLayout({ children }) {
 			</header>
 
 			{/* Main Content */}
-			<main className='flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+			<main className='flex-1 w-full px-4 sm:px-6 lg:px-8 py-8 flex'>
 				{children}
 			</main>
 
 			{/* Footer */}
 			<footer className='bg-slate-800 text-white mt-auto'>
-				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6'>
+				<div className='w-full mx-auto px-4 sm:px-6 lg:px-8 py-4'>
 					<div className='text-center'>
-						<h3 className='text-lg font-semibold text-blue-400 mb-2'>
+						<h3 className='text-md font-semibold text-blue-400 mb-1'>
 							Secure Vox
 						</h3>
 						<p className='text-gray-300 text-sm'>
 							AI-BASED VOICE RECOGNITION & SYNTHETIC VOICE DETECTION
 						</p>
-						<div className='mt-4 text-xs text-gray-400'>
+						<div className='mt-2 text-xs text-gray-400'>
 							<p>Professional Voice Analysis System for Law Enforcement</p>
 							<p className='mt-1'>
 								© 2025 Secure Vox - Police Department Solution

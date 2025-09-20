@@ -2,9 +2,11 @@
 
 import { db } from "@/Firebase/config";
 import {
+	doc,
 	addDoc,
 	collection,
 	getDocs,
+	getDoc,
 	serverTimestamp,
 } from "firebase/firestore";
 
@@ -32,4 +34,21 @@ export async function GetAllInmates() {
 	});
 
 	return inmatesList;
+}
+
+export async function GetInmateById(inmateId) {
+	try {
+		const inmateRef = doc(db, "inmates", inmateId);
+		const inmateSnap = await getDoc(inmateRef);
+
+		if (inmateSnap.exists()) {
+			return { id: inmateSnap.id, ...inmateSnap.data() };
+		} else {
+			console.log("No such inmate found!");
+			return null;
+		}
+	} catch (error) {
+		console.error("Error getting inmate by ID:", error);
+		throw new Error("Failed to retrieve inmate data.");
+	}
 }

@@ -72,10 +72,6 @@ export default function Profiles() {
 		}
 	}, [formData]);
 
-	const handleInmateClick = (inmate) => {
-		console.log("Inmate clicked:", inmate);
-	};
-
 	const filteredInmates = inmates.filter(
 		(inmate) =>
 			inmate &&
@@ -297,8 +293,7 @@ export default function Profiles() {
 								gap: "24px",
 								alignItems: "center",
 								color: "white",
-							}}
-							onClick={() => handleInmateClick(inmate)}>
+							}}>
 							<div style={cellStyle}>{inmate.id}</div>
 							<div style={cellStyle}>{inmate.name}</div>
 							<div style={cellStyle}>
