@@ -1,76 +1,170 @@
-"use client"
-import {useRouter} from "next/navigation";
+"use client";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
-    const router=useRouter();
-  const features = [
-    { icon: "🗂️", title: "Voiceprint Database", desc: "Secure enrollment and storage of inmate voice profiles based on unique biometric sound features." },
-    { icon: "✅", title: "Automatic Verification", desc: "Real-time authentication of speaker identity during monitored calls or recorded communications." },
-    { icon: "🎙️", title: "Synthetic Voice Detection", desc: "Detection of AI-generated or cloned voices using advanced forensic acoustic analysis." },
-    { icon: "📑", title: "Forensic Reports", desc: "Automated reports with file hashes, analysis results, spectrograms, and QR code validation for legal evidence." },
-    { icon: "1🛡️", title: "Audit Logs", desc: "Tamper-proof storage of all analyses to ensure accountability and chain-of-custody integrity." },
-    { icon: "📊", title: "Supervisor Dashboard", desc: "Centralized dashboard for audio uploads, instant results, and alerts for flagged high-risk calls." },
-    { icon: "🔍", title: "Spectrogram & Playback", desc: "Interactive visualization and playback to detect anomalies in speech patterns." },
-    { icon: "🌐", title: "Language Independence", desc: "Designed to work across multiple Indian languages by focusing on biometric sound characteristics, not vocabulary." },
-    { icon: "🏛️", title: "Scalability", desc: "Can begin at a single facility and scale seamlessly across correctional institutions in Goa or nationwide." },
-  ];
+	const router = useRouter();
+	const features = [
+		{
+			icon: "🗂️",
+			title: "Voiceprint Database",
+			desc: "Secure enrollment and storage of inmate voice profiles based on unique biometric sound features.",
+		},
+		{
+			icon: "✅",
+			title: "Automatic Verification",
+			desc: "Real-time authentication of speaker identity during monitored calls or recorded communications.",
+		},
+		{
+			icon: "🎙️",
+			title: "Synthetic Voice Detection",
+			desc: "Detection of AI-generated or cloned voices using advanced forensic acoustic analysis.",
+		},
+		{
+			icon: "📑",
+			title: "Forensic Reports",
+			desc: "Automated reports with file hashes, analysis results, spectrograms, and QR code validation for legal evidence.",
+		},
+		{
+			icon: "1🛡️",
+			title: "Audit Logs",
+			desc: "Tamper-proof storage of all analyses to ensure accountability and chain-of-custody integrity.",
+		},
+		{
+			icon: "📊",
+			title: "Supervisor Dashboard",
+			desc: "Centralized dashboard for audio uploads, instant results, and alerts for flagged high-risk calls.",
+		},
+		{
+			icon: "🔍",
+			title: "Spectrogram & Playback",
+			desc: "Interactive visualization and playback to detect anomalies in speech patterns.",
+		},
+		{
+			icon: "🌐",
+			title: "Language Independence",
+			desc: "Designed to work across multiple Indian languages by focusing on biometric sound characteristics, not vocabulary.",
+		},
+		{
+			icon: "🏛️",
+			title: "Scalability",
+			desc: "Can begin at a single facility and scale seamlessly across correctional institutions in Goa or nationwide.",
+		},
+	];
 
-  return (
-    <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#0A2540", minHeight: "100vh", color: "#FFFFFF" }}>
-      
-      {/* Hero Section */}
-      <section style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "80px 100px" }}>
-        <div style={{ maxWidth: "55%" }}>
-          <h1 style={{ fontSize: "48px", fontWeight: 700, marginBottom: "20px", lineHeight: 1.2 }}>
-            SecureVox: AI-Based Voice Recognition <br /> & Synthetic Voice Detection
-          </h1>
-          <p style={{ fontSize: "18px", lineHeight: "1.8", marginBottom: "40px", color: "#C9D6E2" }}>
-            SecureVox empowers law enforcement agencies with advanced AI-driven technology to verify voice authenticity, 
-            identify AI-cloned speech, and provide reliable digital forensic evidence. 
-            Designed for correctional facilities, it ensures communication monitoring is both secure and tamper-proof.
-          </p>
-          <button className="cta" onClick={()=>{
-            router.push("/Dashboard");
-          }}>Request Access</button>
-        </div>
+	return (
+		<div
+			style={{
+				fontFamily: "Arial, sans-serif",
+				backgroundColor: "#0A2540",
+				minHeight: "100vh",
+				color: "#FFFFFF",
+			}}>
+			{/* Hero Section */}
+			<section
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-between",
+					padding: "80px 100px",
+				}}>
+				<div style={{ maxWidth: "55%" }}>
+					<h1
+						style={{
+							fontSize: "48px",
+							fontWeight: 700,
+							marginBottom: "20px",
+							lineHeight: 1.2,
+						}}>
+						SecureVox: AI-Based Voice Recognition <br /> & Synthetic Voice
+						Detection
+					</h1>
+					<p
+						style={{
+							fontSize: "18px",
+							lineHeight: "1.8",
+							marginBottom: "40px",
+							color: "#C9D6E2",
+						}}>
+						SecureVox empowers law enforcement agencies with advanced AI-driven
+						technology to verify voice authenticity, identify AI-cloned speech,
+						and provide reliable digital forensic evidence. Designed for
+						correctional facilities, it ensures communication monitoring is both
+						secure and tamper-proof.
+					</p>
+					<button
+						className='cta'
+						onClick={() => {
+							router.push("/dashboard");
+						}}>
+						Request Access
+					</button>
+				</div>
 
-        <div style={{ textAlign: "right" }}>
-           <h1 style={{ fontSize: "100px", fontWeight: 900, margin: 0, color: "#f6f6f6ff" }}>
-                Secure
-            </h1>
-            <h1 style={{ fontSize: "100px", fontWeight: 900, margin: 0, color: "#f5f5f5ff",padding: "0px 170px" }}>
-                 Vox
-            </h1>
-          <p style={{ fontSize: "16px", color: "#A9C3DB", marginTop: "-10px" }}>
-            Trusted AI Solution for Police & Correctional Systems
-          </p>
-        </div>
-      </section>
+				<div style={{ textAlign: "right" }}>
+					<h1
+						style={{
+							fontSize: "100px",
+							fontWeight: 900,
+							margin: 0,
+							color: "#f6f6f6ff",
+						}}>
+						Secure
+					</h1>
+					<h1
+						style={{
+							fontSize: "100px",
+							fontWeight: 900,
+							margin: 0,
+							color: "#f5f5f5ff",
+							padding: "0px 170px",
+						}}>
+						Vox
+					</h1>
+					<p style={{ fontSize: "16px", color: "#A9C3DB", marginTop: "-10px" }}>
+						Trusted AI Solution for Police & Correctional Systems
+					</p>
+				</div>
+			</section>
 
-      {/* Features Section */}
-      <section style={{ padding: "80px 100px", backgroundColor: "#112B4A" }}>
-        <h2 style={{ fontSize: "36px", fontWeight: "700", marginBottom: "50px", textAlign: "center", color: "#FFFFFF" }}>
-          Core Capabilities for Law Enforcement
-        </h2>
+			{/* Features Section */}
+			<section style={{ padding: "80px 100px", backgroundColor: "#112B4A" }}>
+				<h2
+					style={{
+						fontSize: "36px",
+						fontWeight: "700",
+						marginBottom: "50px",
+						textAlign: "center",
+						color: "#FFFFFF",
+					}}>
+					Core Capabilities for Law Enforcement
+				</h2>
 
-        <div className="features-grid">
-          {features.map((f, i) => (
-            <div key={i} className="feature-card">
-              <div className="icon">{f.icon}</div>
-              <h3>{f.title}</h3>
-              <p>{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+				<div className='features-grid'>
+					{features.map((f, i) => (
+						<div key={i} className='feature-card'>
+							<div className='icon'>{f.icon}</div>
+							<h3>{f.title}</h3>
+							<p>{f.desc}</p>
+						</div>
+					))}
+				</div>
+			</section>
 
-      {/* Footer */}
-      <footer style={{ padding: "40px 100px", backgroundColor: "#0A1A2F", textAlign: "center", color: "#A9C3DB", fontSize: "14px" }}>
-        © {new Date().getFullYear()} SecureVox | Developed for Law Enforcement Agencies in Goa
-      </footer>
+			{/* Footer */}
+			<footer
+				style={{
+					padding: "40px 100px",
+					backgroundColor: "#0A1A2F",
+					textAlign: "center",
+					color: "#A9C3DB",
+					fontSize: "14px",
+				}}>
+				© {new Date().getFullYear()} SecureVox | Developed for Law Enforcement
+				Agencies in Goa
+			</footer>
 
-      {/* Inline CSS */}
-      <style>{`
+			{/* Inline CSS */}
+			<style>{`
         .cta {
           background:#1D4ED8;
           color:#fff;
@@ -137,6 +231,6 @@ export default function Page() {
           h1[style] { font-size: 34px !important; }
         }
       `}</style>
-    </div>
-  );
+		</div>
+	);
 }
