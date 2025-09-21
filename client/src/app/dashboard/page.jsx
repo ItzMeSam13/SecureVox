@@ -6,6 +6,21 @@ import { useRouter } from "next/navigation";
 import ReportList from "@/components/ReportList";
 import { GetAllInmates } from "../service/createInmates";
 import GenerateReports from "@/app/action/createReports";
+
+// Reusable Loading Component
+const LoadingSpinner = () => {
+	return (
+		<div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800'>
+			<div className="flex flex-col items-center">
+				{/* Main Spinner */}
+				<div className="relative">
+					<div className="w-16 h-16 border-4 border-slate-700/30 border-t-blue-400 rounded-full animate-spin"></div>
+					<div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-r-black-400 rounded-full animate-spin" style={{animationDirection: 'reverse', animationDuration: '1.5s'}}></div>
+				</div>
+			</div>
+		</div>
+	);
+};
 export default function Dashboard() {
 	const router = useRouter();
 	const [loading, setLoading] = useState(true);
@@ -102,11 +117,7 @@ export default function Dashboard() {
 	};
 
 	if (loading) {
-		return (
-			<div className='min-h-screen flex items-center justify-center bg-gray-900 text-white'>
-				<p>Loading...</p>
-			</div>
-		);
+		return <LoadingSpinner />;
 	}
 
 	return (
@@ -164,20 +175,31 @@ export default function Dashboard() {
 						</div>
 					</div>
 
-					{/* Inmate Selection Section */}
-					<div className='bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 text-white shadow-2xl shadow-black/50'>
-						<div className='mb-6'>
-							<h2 className='text-2xl font-bold'>Suspect Analysis</h2>
-							<p className='text-gray-300'>
-								Select an inmate for voice comparison
+					{/* Inmate Selection Section - Made Bigger */}
+					<div className='bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 text-white shadow-2xl shadow-black/50'>
+						<div className='mb-8'>
+							<h2 className='text-2xl font-bold mb-3'>Suspect Analysis</h2>
+							<p className='text-gray-300 text-lg'>
+								Select an inmate for voice comparison and forensic analysis
 							</p>
 						</div>
 
-						<button
-							onClick={handleOpenInmateModal}
-							className='w-full py-3 bg-green-600 hover:bg-green-700 rounded-lg font-semibold transition-colors'>
-							Select Inmate Suspect
-						</button>
+						<div className='space-y-6'>
+							<div className='bg-white/5 border border-white/10 rounded-xl p-6'>
+								<h3 className='text-lg font-semibold mb-2 text-blue-300'>
+									Voice Comparison Process
+								</h3>
+								<p className='text-gray-300 text-sm'>
+									Compare suspect voice recordings with known inmate voice samples for identity verification
+								</p>
+							</div>
+
+							<button
+								onClick={handleOpenInmateModal}
+								className='w-full py-4 text-lg bg-green-600 hover:bg-green-700 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-green-500/25'>
+								Select Inmate Suspect
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
