@@ -1,28 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
-import ReportListItem from "./ReportListItem";
 import { Loader2 } from "lucide-react";
+import React from "react";
 
-export default function ReportList() {
-	const [reports, setReports] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(() => {
-		// Simulate a data fetch
-		const fetchReports = async () => {
-			// In a real app, you would make an API call here
-			const fetchedData = []; // This simulates fetching no reports
-
-			// Simulate a network delay
-			await new Promise((resolve) => setTimeout(resolve, 1000));
-
-			setReports(fetchedData);
-			setIsLoading(false);
-		};
-
-		fetchReports();
-	}, []);
-
+export default function ReportList({ reports, isLoading }) {
 	if (isLoading) {
 		return (
 			<div className='flex items-center justify-center h-full min-h-[150px]'>
@@ -31,21 +11,37 @@ export default function ReportList() {
 		);
 	}
 
+	if (!reports || reports.length === 0) {
+		return (
+			<div className='text-center text-gray-400 py-8'>
+				<p>No reports found.</p>
+			</div>
+		);
+	}
+
 	return (
 		<div className='w-full'>
-			<div className='grid grid-cols-[1fr_1.5fr_auto] items-center bg-white/20 px-3 py-2 rounded-t-lg font-semibold text-sm gap-4'>
+			<div className='grid grid-cols-2 md:grid-cols-[1fr_2fr_auto] items-center bg-white/20 px-3 py-2 rounded-t-lg font-semibold text-sm gap-4'>
 				<p>Report ID</p>
-				<p>Created At</p>
-				<div></div>
+				<p>Suspect ID</p>
+				<p>Report URL</p>
 			</div>
 			<div className='rounded-b-lg border border-t-0 border-white/20'>
-				{reports.length > 0 ? (
-					reports.map((report) => (
-						<ReportListItem key={report.id} report={report} />
-					))
-				) : (
-					<p className='p-4 text-center text-gray-400'>No reports found.</p>
-				)}
+				{reports.map((report) => (
+					<div
+						key={report.id}
+						className='grid grid-cols-2 md:grid-cols-[1fr_2fr_auto] items-center bg-white/5 border-b border-white/10 px-3 py-2 font-light text-sm gap-4'>
+						<p className='truncate'>{report.id}</p>
+						<p className='truncate'>{report.suspectId}</p>
+						<a
+							href={report.reportPdfUrl}
+							target='_blank'
+							rel='noopener noreferrer'
+							className='text-blue-400 hover:underline'>
+							View
+						</a>
+					</div>
+				))}
 			</div>
 		</div>
 	);

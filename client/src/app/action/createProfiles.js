@@ -1,7 +1,8 @@
 "use server";
 
-import cloudinary from "@/lib/cloudinary";
 import { CreateInmates } from "../service/createInmates";
+import { writeFile } from "fs/promises";
+import { join } from "path";
 
 export default async function Inmates(formData) {
 	const name = formData.get("name");
@@ -15,17 +16,6 @@ export default async function Inmates(formData) {
 		const fileBuffer = await audioFile.arrayBuffer();
 		const buffer = Buffer.from(fileBuffer);
 
-		const cloudinaryPromise = new Promise((resolve, reject) => {
-			const uploadStream = cloudinary.uploader.upload_stream(
-				{ resource_type: "auto" },
-				(error, result) => {
-					if (error) reject(new Error("Cloudinary upload failed."));
-					else resolve(result);
-				}
-			);
-			uploadStream.end(buffer);
-		});
-
 		const flaskFormData = new FormData();
 		const audioBlob = new Blob([buffer], { type: audioFile.type });
 		flaskFormData.append("file", audioBlob, audioFile.name);
@@ -35,17 +25,22 @@ export default async function Inmates(formData) {
 			body: flaskFormData,
 		});
 
-		const [cloudinaryResult, flaskResponse] = await Promise.all([
-			cloudinaryPromise,
-			flaskPromise,
-		]);
+		const flaskResponse = await flaskPromise;
 
 		if (!flaskResponse.ok) throw new Error("Flask processing failed.");
 		const mlData = await flaskResponse.json();
 
+		// Save the audio file to the local file system
+		const fileName = `${Date.now()}_${audioFile.name}`;
+		const filePath = join(process.cwd(), "public/audio", fileName);
+		await writeFile(filePath, buffer);
+
+		// Store the local path in the database
+		const audioUrl = `/audio/${fileName}`;
+
 		const dataToSave = {
 			name: name,
-			audioUrl: cloudinaryResult.secure_url,
+			audioUrl: audioUrl,
 			hash: mlData.hash_sha256 || "N/A",
 		};
 
