@@ -84,96 +84,31 @@ export default function DashboardLayout({ children }) {
 						</button>
 					</div>
 
-					{/* Enhanced Navigation */}
+					{/* Clean Navigation - 3 Separate Buttons */}
 					<nav className='pb-8'>
 						<div className='flex space-x-8 justify-center'>
+							{/* Inmate Profile Button */}
 							<button
-								onClick={() => handleNavigation('/dashboard/inmate-profile')}
-								className={`group relative flex items-center space-x-4 px-8 py-5 rounded-xl text-base font-medium backdrop-blur-sm border transition-all duration-300 transform hover:scale-105 ${
+								onClick={() => handleNavigation('/dashboard/profiles')}
+								className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
 									activeTab === '/dashboard/inmate-profile' 
-										? 'bg-blue-500/20 border-blue-400/50 shadow-lg shadow-blue-500/20 hover:bg-blue-500/30' 
-										: 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-blue-500/10'
+										? 'bg-blue-600 text-white shadow-lg' 
+										: 'bg-white/10 text-gray-300 hover:bg-blue-500 hover:text-white'
 								}`}>
-								
-								{/* Gradient background on hover */}
-								<div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 rounded-xl transition-all duration-300"></div>
-								
-								{/* Icon with glow effect */}
-								<div className="relative">
-									<svg className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-									</svg>
-									<div className="absolute inset-0 w-6 h-6 bg-blue-400/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								</div>
-								
-								{/* Text with gradient */}
-								<span className="relative z-10 bg-gradient-to-r from-white to-gray-200 group-hover:from-blue-200 group-hover:to-cyan-200 bg-clip-text text-transparent font-semibold">
-									Inmate Profile
-								</span>
-								
-								{/* Subtle shine effect */}
-								<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+								Inmate Profile
 							</button>
 
-							<button
-								onClick={() => handleNavigation('/dashboard/upload-video')}
-								className={`group relative flex items-center space-x-4 px-8 py-5 rounded-xl text-base font-medium backdrop-blur-sm border transition-all duration-300 transform hover:scale-105 ${
-									activeTab === '/dashboard/upload-video' 
-										? 'bg-purple-500/20 border-purple-400/50 shadow-lg shadow-purple-500/20 hover:bg-purple-500/30' 
-										: 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-purple-500/10'
-								}`}>
-								
-								{/* Gradient background on hover */}
-								<div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/10 group-hover:to-pink-500/10 rounded-xl transition-all duration-300"></div>
-								
-								{/* Icon with glow effect */}
-								<div className="relative">
-									<div className="flex items-center">
-										<svg className="w-6 h-6 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-										</svg>
-										<svg className="w-4 h-4 text-purple-400 group-hover:text-purple-300 transition-colors duration-300 -ml-1 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-										</svg>
-									</div>
-									<div className="absolute inset-0 w-6 h-6 bg-purple-400/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								</div>
-								
-								{/* Text with gradient */}
-								<span className="relative z-10 bg-gradient-to-r from-white to-gray-200 group-hover:from-purple-200 group-hover:to-pink-200 bg-clip-text text-transparent font-semibold">
-									Analyze Audio
-								</span>
-								
-								{/* Subtle shine effect */}
-								<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-							</button>
+							
 
+							{/* Forensic Report Button */}
 							<button
 								onClick={() => handleNavigation('/dashboard/forensic-report')}
-								className={`group relative flex items-center space-x-4 px-8 py-5 rounded-xl text-base font-medium backdrop-blur-sm border transition-all duration-300 transform hover:scale-105 ${
+								className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
 									activeTab === '/dashboard/forensic-report' 
-										? 'bg-emerald-500/20 border-emerald-400/50 shadow-lg shadow-emerald-500/20 hover:bg-emerald-500/30' 
-										: 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:shadow-emerald-500/10'
+										? 'bg-emerald-600 text-white shadow-lg' 
+										: 'bg-white/10 text-gray-300 hover:bg-emerald-500 hover:text-white'
 								}`}>
-								
-								{/* Gradient background on hover */}
-								<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 to-teal-500/0 group-hover:from-emerald-500/10 group-hover:to-teal-500/10 rounded-xl transition-all duration-300"></div>
-								
-								{/* Icon with glow effect */}
-								<div className="relative">
-									<svg className="w-6 h-6 text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-									</svg>
-									<div className="absolute inset-0 w-6 h-6 bg-emerald-400/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								</div>
-								
-								{/* Text with gradient */}
-								<span className="relative z-10 bg-gradient-to-r from-white to-gray-200 group-hover:from-emerald-200 group-hover:to-teal-200 bg-clip-text text-transparent font-semibold">
-									Forensic Report
-								</span>
-								
-								{/* Subtle shine effect */}
-								<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+								Forensic Report
 							</button>
 						</div>
 					</nav>
