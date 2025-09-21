@@ -17,7 +17,8 @@ def create_app():
     app.register_blueprint(spectrogram_bp)
     app.register_blueprint(transcript_bp)
     app.register_blueprint(report_bp)
-    
+   
+   
     # Serve spectrogram images
     from flask import send_from_directory
     @app.route("/spectrograms/<path:filename>")
