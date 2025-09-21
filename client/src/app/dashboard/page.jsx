@@ -453,7 +453,7 @@ export default function Dashboard() {
 									</a>
 								</div>
 								<div style={cellStyle}>
-									{new Date(inmate.createdAt).toLocaleDateString()}
+									{new Date(inmate.createdAt).toLocaleString()}
 								</div>
 							</div>
 						))
