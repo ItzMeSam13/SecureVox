@@ -10,6 +10,7 @@ import { GetAllReports } from "../service/reports";
 import { Loader2, Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import VerifyAndReport from "../action/verify-report";
 import {
 	Dialog,
 	DialogContent,
@@ -121,8 +122,30 @@ export default function Dashboard() {
 		}
 	};
 
-	const handleSubmit = () => {
-		console.log("Submitting audio for analysis:", selectedAudioFile);
+	const handleSubmit = async () => {
+		if (!selectedAudioFile) {
+			alert("Please select an audio file to generate a report.");
+			return;
+		}
+		setIsGeneratingReport(true);
+		try {
+			const formData = new FormData();
+			formData.append("audioFile", selectedAudioFile);
+
+			const result = await VerifyAndReport(formData);
+			if (result.success) {
+				alert("Report generated successfully!");
+				fetchReports();
+				setSelectedAudioFile(null);
+			} else {
+				throw new Error(result.error);
+			}
+		} catch (error) {
+			console.error("Error generating report:", error);
+			alert(`Failed to generate report: ${error.message}`);
+		} finally {
+			setIsGeneratingReport(false);
+		}
 	};
 
 	const handleInmateSelection = (inmate) => {
@@ -506,9 +529,16 @@ export default function Dashboard() {
 
 								<Button
 									onClick={handleSubmit}
-									disabled={!selectedAudioFile}
+									disabled={!selectedAudioFile || isGeneratingReport}
 									className='w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors'>
-									Generate Report
+									{isGeneratingReport ? (
+										<Loader2 className='mr-2 h-4 w-4 animate-spin' />
+									) : (
+										""
+									)}
+									{isGeneratingReport
+										? "Generating Report..."
+										: "Generate Report"}
 								</Button>
 							</div>
 						</div>
